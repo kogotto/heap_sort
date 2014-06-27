@@ -14,6 +14,16 @@ void heapSort(vector<item_t> & data, const comp_t & comp = comp_t())
     }
 }
 
+template<class item_t, class comp_t>
+void buildHeap(vector<item_t> & data, const comp_t & comp)
+{
+    const size_t size = data.size();
+    const size_t last = size - 1;
+    for (int i = parrent(last); i >= 0; --i) {
+        heapify(data, i, size, comp);
+    }
+}
+
 
 int main()
 {
