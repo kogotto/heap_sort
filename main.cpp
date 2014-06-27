@@ -24,6 +24,31 @@ void buildHeap(vector<item_t> & data, const comp_t & comp)
     }
 }
 
+template<class item_t, class comp_t>
+void heapify(vector<item_t> & data, size_t elem, size_t heapSize, const comp_t & comp) {
+    size_t current = elem;
+    for (;;) {
+        size_t max = current;
+
+        const size_t left = left(current);
+        if (left < heapSize && !comp(data[left], data[max])) {
+            max = left;
+        }
+
+        const size_t right = right(current);
+        if (right < heapSize && !comp(data[right], data[max])) {
+            max = right;
+        }
+
+        if (max == current) {
+            return;
+        }
+
+        swap(data[current], data[max]);
+        current = max;
+    }
+}
+
 
 int main()
 {
