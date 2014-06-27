@@ -49,6 +49,18 @@ void heapify(vector<item_t> & data, size_t elem, size_t heapSize, const comp_t &
     }
 }
 
+inline size_t left(size_t current) {
+    return 2 * current + 1;
+}
+
+inline size_t right(size_t currnet) {
+    return left(currernt) + 1;
+}
+
+inline size_t parrent(size_t current) {
+    return (current - 1) / 2;
+}
+
 
 int main()
 {
