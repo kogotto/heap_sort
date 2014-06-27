@@ -7,14 +7,10 @@ template<class item_t, class comp_t>
 void heapSort(vector<item_t> & data, const comp_t & comp = comp_t())
 {
     const size_t size = data.size();
+    buildHeap(data, comp);
     for (size_t i = 0; i < size - 1; ++i) {
-        size_t minIndex = i;
-        for (size_t j = i + 1; j < size; ++j) {
-            if (comp(data[j], data[minIndex])) {
-                minIndex = j;
-            }
-        }
-        swap(data[i], data[minIndex]);
+        swap(data[0], data[size - i - 1]);
+        heapify(data, 0, size - i - 1, comp);
     }
 }
 
